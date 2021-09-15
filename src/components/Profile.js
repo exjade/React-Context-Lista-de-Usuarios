@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import UserContext from '../context/User/UserContext'
 
 const Profile = () => {
     return (
-        <div>
-            Profile
-        </div>
+        <>
+        {
+            selectedUsers
+        }
+        </>
     )
 }
 
