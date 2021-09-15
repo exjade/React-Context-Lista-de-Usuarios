@@ -3,23 +3,23 @@ import UserReducer from './UserReducer'
 import UserContext from './UserContext'
 import axios from 'axios'
 
-const UserState  = (props) => {
+const UserState = (props) => {
     const initialState = {
-        users: [], 
+        users: [],
         selectedUsers: null,
     }
-    
+
     const [state, dispatch] = useReducer(UserReducer, initialState)
 
-    const getUsers = async() => {
-       const res = await axios.get('https://reqres.in/api/users')
-       dispatch({
-           type: 'GET_USERS',
-           payload: res.data.data
-       })
+    const getUsers = async () => {
+        const res = await axios.get('https://reqres.in/api/users')
+        dispatch({
+            type: 'GET_USERS',
+            payload: res.data.data
+        })
     }
-    
-    const getProfile = async(id) => {
+
+    const getProfile = async (id) => {
         const res = await axios.get(`https://reqres.in/api/users/${id}`)
         dispatch({
             type: 'GET_PROFILE',
@@ -27,13 +27,22 @@ const UserState  = (props) => {
         })
     }
 
+    const handleClose = (id) => {
+        dispatch({
+            type: 'DELETE_USER',
+            payload: --id
+        })
+    }
+
+
     return (
-        <UserContext.Provider 
-        value={{
-            users: state.users,
-            selectedUsers: state.selectedUsers,
-            getUsers,
-            getProfile
+        <UserContext.Provider
+            value={{
+                users: state.users,
+                selectedUsers: state.selectedUsers,
+                getUsers,
+                getProfile,
+                handleClose
             }}
         >
             {props.children}
