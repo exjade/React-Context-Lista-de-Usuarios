@@ -13,7 +13,6 @@ const UserState  = (props) => {
 
     const getUsers = async() => {
        const res = await axios.get('https://reqres.in/api/users')
-       console.log(res.data.data)
        dispatch({
            type: 'GET_USERS',
            payload: res.data.data
