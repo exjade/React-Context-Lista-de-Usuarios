@@ -1,6 +1,7 @@
 import './App.css';
 
 //components
+import Header from './components/Header'
 import Profile from './components/Profile'
 import UserList from './components/UserList'
 
@@ -12,9 +13,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-
     <UserState>
-      <div className="container p-4">
+      <Header />
+      <div className="container p-4 bg-light">
         <div className="row">
           <div className="col-md-7">
             <UserList />

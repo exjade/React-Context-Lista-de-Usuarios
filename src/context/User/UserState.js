@@ -30,7 +30,7 @@ const UserState = (props) => {
     const handleClose = (id) => {
         dispatch({
             type: 'DELETE_USER',
-            payload: --id
+            payload: null
         })
     }
 
